@@ -1,4 +1,6 @@
 //API routes
+const mongoose = require('mongoose');
+const Ingredient = require('../models/Ingredient');
 
 exports.getIngredientsApi = (req, res) => {
   Ingredient.find()
