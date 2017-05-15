@@ -22,8 +22,7 @@ console.log(token);
 const mlab = process.env.MLAB_PASSWORD;
 
 //database is called recipes
-mongoose.connect(`mongodb://<elise>:<${mlab}>@ds143201.mlab.com:43201/recipe_list_api`);
-
+mongoose.connect(`mongodb://elise:${mlab}@ds143201.mlab.com:43201/recipe_list_api`);
 const {connection: db} = mongoose;
 
 db.on('error', console.error.bind(console, 'connection error:'));
