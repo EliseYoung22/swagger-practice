@@ -1,5 +1,9 @@
 var express = require('express');
 var router = express.Router();
+const mlab = process.env.MLAB_PASSWORD;
+
+var db = mongojs(`mongodb://<elise>:<${mlab}>@ds143201.mlab.com:43201/recipe_list_api`)
+
 
 const Ingredient = require('../models/Ingredient');
 const ingredientController = require ('../controllers/ingredientController');
