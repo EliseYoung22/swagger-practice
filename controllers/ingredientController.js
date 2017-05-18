@@ -40,9 +40,15 @@ exports.updateIngredients = (req, res) => {
     })
 };
 
-exports.deleteIngredients = (req, res) => {
-  Ingredient.findOneAndRemove({ _id: req.params.id })
-    .then(ingredient => {
-      res.redirect('/')
-    })
+exports.deleteIngredients = function(req, res){
+	Ingredient.findByIdAndRemove({_id: req.params.id},
+	   function(err){
+		if(err) res.json(err);
+		else {
+      Ingredient.find()
+        .then(ingredients => {
+          res.json(ingredients)
+        })
+    };
+	});
 };

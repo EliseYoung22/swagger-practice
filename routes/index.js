@@ -13,6 +13,15 @@ router.get('/ingredients/:id/edit',  ingredientController.editIngredients);
 
 router.post('/ingredients/:id/edit',  ingredientController.updateIngredients);
 
-router.post('/ingredients/:id/delete',  ingredientController.deleteIngredients);
+// router.post('/ingredients/:id/delete',  ingredientController.deleteIngredients);
+
+router.get('/ingredient/:id/delete', function(req, res){
+	Ingredient.findByIdAndRemove({_id: req.params.id},
+	   function(err){
+		if(err) res.json(err);
+		else    res.redirect('/ingredients');
+	});
+});
+
 
 module.exports = router;

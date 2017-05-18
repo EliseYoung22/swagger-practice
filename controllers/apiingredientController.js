@@ -36,9 +36,15 @@ exports.updateIngredientsApi = (req, res) => {
     })
 };
 
-exports.deleteIngredientsApi = (req, res) => {
-  Ingredient.findOneAndDelete({ _id: req.params.id })
-    .then(ingredient => {
-      res.redirect('/api')
-    })
+exports.deleteIngredientApi = function(req, res){
+	Ingredient.findByIdAndRemove({_id: req.params.id},
+	   function(err){
+		if(err) res.json(err);
+		else {
+      Ingredient.find()
+        .then(ingredients => {
+          res.json(ingredients)
+        })
+    };
+	});
 };
