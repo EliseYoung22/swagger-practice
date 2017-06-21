@@ -1,0 +1,33 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: Ingredient API
+host: localhost:3000
+basePath: /api
+schemes: http
+consumes:
+  - application/json
+produces:
+  - application/json 
+paths:
+  /ingredients:
+      post:
+        summary: Add a new pet to the store
+        description: ''
+        operationId: addPet
+        consumes:
+          - application/json
+          - application/xml
+        produces:
+          - application/xml
+          - application/json
+        parameters:
+          - in: body
+            name: body
+            required: true
+            schema:
+              type: string
+              $ref: '#/definitions/Ingredient'
+        responses:
+          '405':
+            description: Invalid input
